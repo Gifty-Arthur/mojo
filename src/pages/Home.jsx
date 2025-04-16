@@ -8,7 +8,7 @@ import { FaGithub } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import p3 from "../assets/images/p3.png";
 
-const Full = () => {
+const Home = () => {
   const [countExperience, setCountExperience] = useState(0);
   const [countProject, setCountProject] = useState(0);
 
@@ -116,4 +116,4 @@ const Full = () => {
   );
 };
 
-export default Full;
+export default Home;
