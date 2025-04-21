@@ -51,43 +51,54 @@ const AboutMe = () => {
   }, []);
 
   return (
-    <div>
+    <div className="px-4">
+      {/* Header */}
       <div className="text-center mt-40">
-        <h1 className="text-white font-bold text-[40px]">About</h1>
-        <p className="text-[20px] text-[#707070]">
+        <h1 className="text-white font-bold text-[28px] md:text-[40px]">
+          About
+        </h1>
+        <p className="text-[16px] md:text-[20px] text-[#707070] mt-2">
           Lorem ipsum dolor sit amet consectetur. Imperdiet convallis blandit
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-20 px-6 mt-16">
-        <img src={p3} alt="" className="w-[510px] h-[510px]" />
+      {/* Image + Text */}
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-10 mt-16">
+        <img
+          src={p3}
+          alt="about me"
+          className="w-[250px] h-[250px] md:w-[510px] md:h-[510px]"
+        />
         <div>
-          <p className="text-[18px] text-[#959595] text-base">
+          <p className="text-[14px] md:text-[18px] text-[#959595] leading-relaxed text-justify">
             A software engineer, the modern-day architect of digital realms,
             navigates the ethereal landscapes of code, sculpting intangible
             structures that shape our technological world. With fingers poised
             over keyboards like virtuoso pianists, they compose symphonies of
-            logic, their minds a labyrinth of algorithms and solutions.Their
+            logic, their minds a labyrinth of algorithms and solutions. Their
             canvas is a screen, a vast expanse where lines of code dance in
             intricate patterns, weaving the fabric of programs and applications.
             Each keystroke is a brushstroke, crafting intricate architectures
-            and breathing life into innovative designs.In this digital atelier,
+            and breathing life into innovative designs. In this digital atelier,
             they don the mantle of problem solvers, confronting bugs and
             glitches like valiant knights in an ever-evolving quest for
-            perfection. Debugging becomes a noble pursuit, unraveling the
-            mysteries hidden within the tangled webs of code. designs.In this
-            digital atelier.
+            perfection.
           </p>
-          <button className="hidden md:block w-[141px] h-[43px] shadow-lg mt-8 bg-[#5e00bf] rounded-md transition">
-            <p className="hover:text-black font-poppins text-[14px]">
+
+          <a
+            href="/resume.pdf"
+            download
+            className="w-full md:w-[141px] h-[43px] shadow-lg hover:bg-[#5e00bf] mt-4 rounded-md bg-[#7F00FF] transition flex items-center justify-center"
+          >
+            <p className="hover:text-black text-[14px] font-poppins text-center">
               Download CV
             </p>
-          </button>
-
-          {/* Skill Rings */}
+          </a>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-10 mt-12">
+
+      {/* Skills */}
+      <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-10 mt-12">
         {/* Figma */}
         <div id="figma" className="relative w-40 h-40 skill-container">
           <svg className="absolute w-full h-full">
@@ -108,8 +119,7 @@ const AboutMe = () => {
               strokeWidth="12"
               fill="none"
               strokeDasharray="739.6"
-              strokeDashoffset="79.6" // Initially hidden
-              className="progress-ring"
+              strokeDashoffset="739.6"
               transform="rotate(-90 80 80)"
             />
           </svg>
@@ -137,7 +147,7 @@ const AboutMe = () => {
               stroke="#7F00FF"
               strokeWidth="12"
               fill="none"
-              strokeDashoffset="439.6"
+              strokeDashoffset="739.6"
               strokeDasharray="739.6"
               transform="rotate(-90 80 80)"
             />
@@ -166,36 +176,8 @@ const AboutMe = () => {
               stroke="#7F00FF"
               strokeWidth="12"
               fill="none"
-              strokeDashoffset="339.6"
-              strokeDasharray="699.6"
-              transform="rotate(-90 80 80)"
-            />
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center text-center text-[#7F00FF] font-bold">
-            GitHub - 50%
-          </div>
-        </div>
-
-        <div id="github" className="relative w-40 h-40 skill-container">
-          <svg className="absolute w-full h-full">
-            <circle
-              cx="80"
-              cy="80"
-              r="70"
-              stroke="#E5E7EB"
-              strokeWidth="12"
-              fill="none"
-            />
-            <circle
-              ref={githubRef}
-              cx="80"
-              cy="80"
-              r="70"
-              stroke="#7F00FF"
-              strokeWidth="12"
-              fill="none"
-              strokeDashoffset="339.6"
-              strokeDasharray="699.6"
+              strokeDashoffset="739.6"
+              strokeDasharray="739.6"
               transform="rotate(-90 80 80)"
             />
           </svg>

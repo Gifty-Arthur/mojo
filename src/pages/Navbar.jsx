@@ -34,9 +34,14 @@ const Navbar = () => {
         </ul>
 
         {/* Desktop Button */}
-        <button className="hidden md:block w-[141px] h-[43px] shadow-lg hover:bg-[#5e00bf] rounded-md bg-[#7F00FF] transition">
-          <p className="hover:text-black font-poppins">Hire me</p>
-        </button>
+        <a
+          href="mailto:giftarthur031@gmail.com"
+          className="hidden md:block w-[141px] h-[43px] shadow-lg hover:bg-[#5e00bf] rounded-md bg-[#7F00FF] transition"
+        >
+          <p className="hover:text-black font-poppins text-center mt-2 ">
+            Hire me
+          </p>
+        </a>
 
         {/* Mobile Menu Toggle */}
         <div
@@ -68,9 +73,12 @@ const Navbar = () => {
               )
             )}
           </ul>
-          <button className="w-full mt-4 h-[43px] shadow-lg hover:bg-[#5e00bf] rounded-md bg-[#7F00FF] transition">
+          <a
+            href="mailto:giftarthur031@gmail.com"
+            className="w-full mt-4 h-[43px] shadow-lg hover:bg-[#5e00bf] rounded-md bg-[#7F00FF] transition flex items-center justify-center"
+          >
             <p className="hover:text-black font-poppins">Hire me</p>
-          </button>
+          </a>
 
           {/* home */}
         </div>

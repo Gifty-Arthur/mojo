@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import Work from "./Work";
 import AboutMe from "./AboutMe";
+import { Link } from "react-scroll";
 
 import { FaInstagram } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
@@ -25,7 +26,7 @@ const Home = () => {
       } else {
         clearInterval(interval);
       }
-    }, 10); // Adjust the speed of counting by changing the interval time
+    }, 10);
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,75 +47,112 @@ const Home = () => {
 
   return (
     <div className="pt-32 mt-4 px-6 py-4">
-      <div className="text-white text-[30px]">
-        <div className="flex items-center justify-between">
-          <div className="flex flex-col">
-            <h1 className="font-semibold text-[24px] text-[#959595] font-sans">
-              I am
-            </h1>
-            <h1 className="text-[28px] text-[#959595] font-bold font-poppins ">
-              Mbeleck Berle
-            </h1>
-            <h1 className="text-4xl text-[#7F00FF] mt-4">
-              ML Engineer & Data Analyst
-            </h1>
-            <p className="text-[10px] mt-4 text-[#BABABA]">
-              Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-              <br /> consectetur, adipisci velit..." "There is no one who loves
-              pain itself, <br />
-              who seeks after it and wants to have it, simply because it is
-              pain..
-            </p>
-            <div className="flex cursor-pointer text-[#BABABA] flex-row gap-2 mt-4 ">
-              <CiLinkedin className="hover:text-[#5e00bf]" />
-              <FaInstagram className="hover:text-[#5e00bf]" />
-              <FaGithub className="hover:text-[#5e00bf]" />
-            </div>
-            {/* button */}
-            <div className="flex gap-4 mt-10">
-              <button className="hidden md:block w-[141px] h-[43px] shadow-lg hover:bg-[#5e00bf] rounded-md bg-[#7F00FF] transition">
-                <p className="hover:text-black font-poppins text-[14px]">
-                  Hire me
-                </p>
-              </button>
-              <button className="hidden md:block w-[141px] h-[43px] shadow-lg border-[#959595] rounded-md border-2 transition">
-                <p className="hover:text-black font-poppins text-[14px]">
-                  Download CV
-                </p>
-              </button>
-            </div>
+      <div id="home">
+        <div className="text-white text-[30px]">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            {/* Left Side - Text Content */}
+            <div className="flex flex-col">
+              <h1 className="font-semibold text-[20px] md:text-[24px] text-[#959595] font-sans">
+                I am
+              </h1>
+              <h1 className="text-[22px] md:text-[28px] text-[#959595] font-bold font-poppins">
+                Mbeleck Berle
+              </h1>
+              <h1 className="text-2xl md:text-4xl text-[#7F00FF] mt-4">
+                ML Engineer & Data Analyst
+              </h1>
+              <p className="text-[12px] md:text-[14px] mt-4 text-[#BABABA] leading-relaxed text-justify">
+                Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+                <br /> consectetur, adipisci velit..." "There is no one who
+                loves pain itself, <br />
+                who seeks after it and wants to have it, simply because it is
+                pain..
+              </p>
 
-            {/* experience */}
-            <div
-              id="experience5"
-              className="w-[254px] h-[110px] rounded-md bg-[#1e1c1b] mt-10 "
-            >
-              <div className="flex items-center ">
-                <div className="p-4 border-r-2 mt-2 " ref={experienceRef}>
-                  <p className="text-[24px]  text-[#7F00FF] font-bold">
-                    {countExperience}+
+              {/* Social Icons */}
+              <div className="flex text-[#BABABA] flex-row gap-4 mt-4">
+                <a
+                  href="https://www.linkedin.com/in/your-linkedin-username"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#5e00bf]"
+                >
+                  <CiLinkedin size={24} />
+                </a>
+                <a
+                  href="https://www.instagram.com/your-instagram-username"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#5e00bf]"
+                >
+                  <FaInstagram size={24} />
+                </a>
+                <a
+                  href="https://github.com/MbeleckBerle"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#5e00bf]"
+                >
+                  <FaGithub size={24} />
+                </a>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex flex-col md:flex-row gap-4 mt-10">
+                <a
+                  href="mailto:giftarthur031@gmail.com"
+                  className="w-full md:w-[141px] h-[43px] shadow-lg hover:bg-[#5e00bf] rounded-md bg-[#7F00FF] transition flex items-center justify-center"
+                >
+                  <p className="hover:text-black text-[14px] font-poppins text-center">
+                    Hire me
                   </p>
-                  <p className="text-[#DFDFDF] text-[16px]">Experience</p>
-                </div>
-                <div className="p-4  mt-2" ref={projectRef}>
-                  <p className="text-[24px] text-[#7F00FF  text-[#7F00FF] font-bold">
-                    {countProject}+
-                  </p>
-                  <p className="text-[#DFDFDF] text-[16px]">Project done</p>
+                </a>
+              </div>
+
+              {/* Experience Section */}
+              <div
+                id="experience5"
+                className="w-full md:w-[254px] h-[110px] rounded-md bg-[#1e1c1b] mt-10"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="p-4 border-r-2" ref={experienceRef}>
+                    <p className="text-[24px] text-[#7F00FF] font-bold">
+                      {countExperience}+
+                    </p>
+                    <p className="text-[#DFDFDF] text-[16px]">Experience</p>
+                  </div>
+                  <div className="p-4" ref={projectRef}>
+                    <p className="text-[24px] text-[#7F00FF] font-bold">
+                      {countProject}+
+                    </p>
+                    <p className="text-[#DFDFDF] text-[16px]">Project done</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div>
-            {/* image profile */}
-            <img src={p3} alt="" className="w-[510px] h-[510]" />
+
+            {/* Right Side - Image */}
+            <div className="flex justify-center">
+              <img
+                src={p3}
+                alt="Profile"
+                className="w-[250px] h-[250px] md:w-[510px] md:h-[510px]"
+              />
+            </div>
           </div>
         </div>
       </div>
-      <Work />
-      <AboutMe />
 
-      <Portfolio />
+      {/* Sections */}
+      <div id="service">
+        <Work />
+      </div>
+      <div id="about">
+        <AboutMe />
+      </div>
+      <div id="portfolio">
+        <Portfolio />
+      </div>
     </div>
   );
 };
