@@ -1,19 +1,68 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import p3 from "../assets/images/p3.png";
+
 const AboutMe = () => {
+  const figmaRef = useRef();
+  const webRef = useRef();
+  const githubRef = useRef();
+
+  useEffect(() => {
+    const animateRing = (ref, percent) => {
+      const circle = ref.current;
+      const radius = 70;
+      const circumference = 2 * Math.PI * radius;
+      const offset = circumference * (1 - percent / 100);
+
+      circle.style.strokeDasharray = `${circumference}`;
+      circle.style.transition = "stroke-dashoffset 1s ease-out";
+      circle.style.strokeDashoffset = offset;
+    };
+
+    const resetRing = (ref) => {
+      const circle = ref.current;
+      const radius = 70;
+      const circumference = 2 * Math.PI * radius;
+      circle.style.strokeDashoffset = circumference;
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id;
+          if (entry.isIntersecting) {
+            if (id === "figma") animateRing(figmaRef, 100);
+            if (id === "web") animateRing(webRef, 70);
+            if (id === "github") animateRing(githubRef, 50);
+          } else {
+            if (id === "figma") resetRing(figmaRef);
+            if (id === "web") resetRing(webRef);
+            if (id === "github") resetRing(githubRef);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    document.querySelectorAll(".skill-container").forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div>
-      <div>
-        <div className=" text-center mt-40">
-          <h1 className="text-white font-bold text-[40px]">About</h1>
-          <p className="text-[20px] text-[#707070]">
-            Lorem ipsum dolor sit amet consectetur. Imperdiet convallis blandit
-          </p>
-        </div>
+      <div className="text-center mt-40">
+        <h1 className="text-white font-bold text-[40px]">About</h1>
+        <p className="text-[20px] text-[#707070]">
+          Lorem ipsum dolor sit amet consectetur. Imperdiet convallis blandit
+        </p>
+      </div>
 
-        <div className="flex items-center justify-between gap-20 ">
-          <img src={p3} alt="" className="w-[510px] h-[510px] mt-18" />
-          <p className="text-[18px] text-[#959595]  text-base">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-20 px-6 mt-16">
+        <img src={p3} alt="" className="w-[510px] h-[510px]" />
+        <div>
+          <p className="text-[18px] text-[#959595] text-base">
             A software engineer, the modern-day architect of digital realms,
             navigates the ethereal landscapes of code, sculpting intangible
             structures that shape our technological world. With fingers poised
@@ -29,6 +78,130 @@ const AboutMe = () => {
             mysteries hidden within the tangled webs of code. designs.In this
             digital atelier.
           </p>
+          <button className="hidden md:block w-[141px] h-[43px] shadow-lg mt-8 bg-[#5e00bf] rounded-md transition">
+            <p className="hover:text-black font-poppins text-[14px]">
+              Download CV
+            </p>
+          </button>
+
+          {/* Skill Rings */}
+        </div>
+      </div>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-10 mt-12">
+        {/* Figma */}
+        <div id="figma" className="relative w-40 h-40 skill-container">
+          <svg className="absolute w-full h-full">
+            <circle
+              cx="80"
+              cy="80"
+              r="70"
+              stroke="#E5E7EB"
+              strokeWidth="12"
+              fill="none"
+            />
+            <circle
+              ref={figmaRef}
+              cx="80"
+              cy="80"
+              r="70"
+              stroke="#7F00FF"
+              strokeWidth="12"
+              fill="none"
+              strokeDasharray="739.6"
+              strokeDashoffset="79.6" // Initially hidden
+              className="progress-ring"
+              transform="rotate(-90 80 80)"
+            />
+          </svg>
+          <div className="absolute inset-0 flex items-center justify-center text-center text-[#7F00FF] font-bold">
+            Figma - 100%
+          </div>
+        </div>
+
+        {/* Web */}
+        <div id="web" className="relative w-40 h-40 skill-container">
+          <svg className="absolute w-full h-full">
+            <circle
+              cx="80"
+              cy="80"
+              r="70"
+              stroke="#E5E7EB"
+              strokeWidth="12"
+              fill="none"
+            />
+            <circle
+              ref={webRef}
+              cx="80"
+              cy="80"
+              r="70"
+              stroke="#7F00FF"
+              strokeWidth="12"
+              fill="none"
+              strokeDashoffset="439.6"
+              strokeDasharray="739.6"
+              transform="rotate(-90 80 80)"
+            />
+          </svg>
+          <div className="absolute inset-0 flex items-center justify-center text-center text-[#7F00FF] font-bold">
+            Web - 70%
+          </div>
+        </div>
+
+        {/* GitHub */}
+        <div id="github" className="relative w-40 h-40 skill-container">
+          <svg className="absolute w-full h-full">
+            <circle
+              cx="80"
+              cy="80"
+              r="70"
+              stroke="#E5E7EB"
+              strokeWidth="12"
+              fill="none"
+            />
+            <circle
+              ref={githubRef}
+              cx="80"
+              cy="80"
+              r="70"
+              stroke="#7F00FF"
+              strokeWidth="12"
+              fill="none"
+              strokeDashoffset="339.6"
+              strokeDasharray="699.6"
+              transform="rotate(-90 80 80)"
+            />
+          </svg>
+          <div className="absolute inset-0 flex items-center justify-center text-center text-[#7F00FF] font-bold">
+            GitHub - 50%
+          </div>
+        </div>
+
+        <div id="github" className="relative w-40 h-40 skill-container">
+          <svg className="absolute w-full h-full">
+            <circle
+              cx="80"
+              cy="80"
+              r="70"
+              stroke="#E5E7EB"
+              strokeWidth="12"
+              fill="none"
+            />
+            <circle
+              ref={githubRef}
+              cx="80"
+              cy="80"
+              r="70"
+              stroke="#7F00FF"
+              strokeWidth="12"
+              fill="none"
+              strokeDashoffset="339.6"
+              strokeDasharray="699.6"
+              transform="rotate(-90 80 80)"
+            />
+          </svg>
+          <div className="absolute inset-0 flex items-center justify-center text-center text-[#7F00FF] font-bold">
+            GitHub - 50%
+          </div>
         </div>
       </div>
     </div>

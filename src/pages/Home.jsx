@@ -7,6 +7,7 @@ import { FaInstagram } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import p3 from "../assets/images/p3.png";
+import Portfolio from "./Portfolio";
 
 const Home = () => {
   const [countExperience, setCountExperience] = useState(0);
@@ -112,6 +113,8 @@ const Home = () => {
       </div>
       <Work />
       <AboutMe />
+
+      <Portfolio />
     </div>
   );
 };
